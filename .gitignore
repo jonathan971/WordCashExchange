@@ -1,0 +1,20 @@
+# Dossiers Node.js
+node_modules/
+
+# Fichiers de verrouillage Yarn
+yarn.lock
+
+# Fichiers de verrouillage npm
+package-lock.json
+
+# Dossiers de sauvegarde
+.npm
+.npmignore
+.npmrc
+.npm-token
+
+# Fichier .env (contenant des secrets ou des configurations spécifiques à l'environnement)
+.env
+
+# Fichiers de configuration pour l'éditeur Visual Studio Code
+.vscode/
