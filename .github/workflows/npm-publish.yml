@@ -24,4 +24,5 @@ jobs:
 
       - name: Run tests
         run: npm test
-        working-directory : userapi
+        working-directory : userapi/test
+        
