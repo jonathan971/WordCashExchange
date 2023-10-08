@@ -26,7 +26,7 @@ jobs:
         working-directory : userapi
 
       - name: Start Redis
-        run: redis-server redis.conf
+        run: redis-server
 
       - name: Run tests
         run: npm test
