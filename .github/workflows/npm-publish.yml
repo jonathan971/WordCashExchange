@@ -20,8 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory : heyy/userapi
+        working-directory : userapi
 
       - name: Run tests
         run: npm test
-        working-directory : heyy/userapi
+        working-directory : userapi
