@@ -1,19 +1,20 @@
 # heyy
-Just for TP
+Juste pour les LAB
 
-## Table des matières
+## Table des matières 🧾
 
 - [Introduction](#introduction)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Contribution](#contribution)
-- [Licence](#licence)
+- [Installation 📥](#installation)
+- [Utilisation 📲](#utilisation)
+- [Contribuer 🗣️](#contribuer)
+- [Auteur 👨🏽‍💻](#auteur)
+- [Licence 📃](#licence)
 
 ## Introduction
 
 installe c'est utile.
 
-## Installation
+## Installation 📥
 
 voila comment installer
 
@@ -28,3 +29,14 @@ cd heyy
 
 # Installer les dépendances
 npm install
+``````
+## Utilisation 📲
+
+## Contribuer 🗣️
+
+N'hésitez pas à contribuer en ouvrant des problèmes ou en soumettant des demandes de tirage (pull requests) pour améliorer l'application.
+
+## Auteurs 👨🏽‍💻
+
+- [Jonathan VELIN](https://github.com/jonathan971)
+- [Mathias NERIS](https://github.com/M5-ux)
