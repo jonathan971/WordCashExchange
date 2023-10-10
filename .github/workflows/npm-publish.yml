@@ -26,10 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: userapi
-
-      - name: Start Redis
-        run: redis-server
+        working-directory: userapi 
 
       - name: Run tests
         run: npm test
