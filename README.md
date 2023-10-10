@@ -29,7 +29,8 @@ cd heyy
 
 # Installer les dépendances
 npm install
-``````
+```
+
 ## Utilisation 📲
 
 ## Contribuer 🗣️
