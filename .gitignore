@@ -18,3 +18,12 @@ package-lock.json
 
 # Fichiers de configuration pour l'éditeur Visual Studio Code
 .vscode/
+
+# Istio
+lab_9/**/istio-*.yaml    
+lab_9/**/istioctl.*      
+lab_9/**/kiali-*.yaml    
+lab_9/**/helm-*.yaml     
+lab_9/**/envoy-*         
+lab_9/**/.istio          
+lab_9/*.bak              
