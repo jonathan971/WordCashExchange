@@ -1,5 +1,5 @@
 const express = require('express');
-const { MongoClient } = require("mongodb");
+const mongoose = require("mongoose");
 const router = require('./router');
 
 const uri = 'mongodb+srv://jonathanvelin:105Dalciat@cluster0.seiub71.mongodb.net/?retryWrites=true&w=majority';
