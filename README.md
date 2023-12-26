@@ -1,5 +1,5 @@
-# heyy
-Juste pour les LAB
+# WordCashExchange
+Vous avez besoin de convertir des devises sans prise de tête ? Vous êtes au bon endroit ! Que ce soit pour un voyage, un achat en ligne, ou juste par curiosité, WorldCashExchange vous simplifie la vie avec des conversions rapides et faciles. On vous donne les taux actuels en un clin d'œil, et tout ça gratuitement.
 
 ## Table des matières 🧾
 
@@ -25,7 +25,7 @@ Exemple :
 git clone https://github.com/jonathan971/heyy.git
 
 # Accéder au répertoire du projet
-cd heyy
+cd WordCashExchange
 
 # Installer les dépendances
 npm install

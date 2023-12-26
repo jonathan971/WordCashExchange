@@ -1,30 +1,28 @@
-const express = require('express');
-const mongoose = require("mongoose");
-const router = require('./router');
+const express = require('express')
+const userRouter = require('./routes/user')
+const bodyParser = require('body-parser')
 
-const uri = 'mongodb+srv://jonathanvelin:105Dalciat@cluster0.seiub71.mongodb.net/?retryWrites=true&w=majority';
+const app = express()
+const port = process.env.PORT || 3000
 
-const client = new MongoClient(uri);
+const db = require('./dbClient')
+db.on("error", (err) => {
+  console.error(err)
+})
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+app.use(bodyParser.json())
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.use('/user', userRouter)
+
+const server = app.listen(port, (err) => {
+  if (err) throw err
+  console.log("Server listening the port " + port)
+})
 
 
-async function connectToMongoDB() {
-  try {
-    await client.connect();
-    console.log("Connected successfully to MongoDB");
-  } catch (err) {
-    console.error('Error connecting to MongoDB:', err);
-  }
-}
-
-const app = express();
-const port = 3000;
-
-//app.use(express.static('public'));
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use('/', router()); 
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-  connectToMongoDB();
-});
+module.exports = server
