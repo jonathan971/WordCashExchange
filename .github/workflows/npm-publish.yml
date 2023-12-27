@@ -29,5 +29,5 @@ jobs:
         working-directory: userapi 
 
       - name: Run tests
-        run: npx jasmine
-        working-directory: userapi/test/**/*.spec.js
+        run: npx jasmine 'test/**/*.spec.js'
+        working-directory: userapi
