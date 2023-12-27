@@ -20,6 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: userapi
 
       - name: Generate Changelog
         run: npx standard-version --release-as minor
@@ -31,3 +32,4 @@ jobs:
           git add CHANGELOG.md
           git commit -m "chore: update changelog"
           git push
+        working-directory: userapi
