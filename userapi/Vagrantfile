@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+
+  # Configure network and forwarded ports
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Configure VM specifications for VMware Fusion
+  config.vm.provider "vmware_desktop" do |vmware|
+    # Name of the VM in VMware Fusion
+    vmware.vmx["displayName"] = "centos7_vm"
+
+    # Allocate memory (in MB)
+    vmware.vmx["memsize"] = "2048"
+
+    # Allocate CPU cores
+    vmware.vmx["numvcpus"] = "2"
+  end
+
+  # Use Ansible for provisioning (optional)
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbooks/run.yml"
+  end
+end

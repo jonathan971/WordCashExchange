@@ -27,3 +27,6 @@ lab_9/**/helm-*.yaml
 lab_9/**/envoy-*         
 lab_9/**/.istio          
 lab_9/*.bak              
+
+
+.vagrant
