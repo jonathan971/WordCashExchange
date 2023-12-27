@@ -11,7 +11,7 @@ jobs:
 
     services:
       redis:
-        image: mongodb
+        image: redis
         ports:
           - 6379:6379
 
@@ -29,5 +29,5 @@ jobs:
         working-directory: userapi 
 
       - name: Run tests
-        run: npm test
+        run: npx jasmine
         working-directory: userapi

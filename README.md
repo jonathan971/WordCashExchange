@@ -25,12 +25,16 @@ Exemple :
 git clone https://github.com/jonathan971/heyy.git
 
 # Accéder au répertoire du projet
-cd WordCashExchange
+cd Heyy
 
 # Installer les dépendances
 npm install
 ```
 ## Utilisation 📲
+
+
+# Test des routes, configurations et autres avec Jasmine (Bonus) :
+```npx jasmine 'test/**/*.spec.js'```
 
 ## Contribuer 🗣️
 

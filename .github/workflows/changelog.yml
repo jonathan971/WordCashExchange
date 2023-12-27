@@ -1,0 +1,33 @@
+name: Update Changelog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Changelog
+        run: npx standard-version --release-as minor
+
+      - name: Commit and Push Changelog Updates
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update changelog"
+          git push
