@@ -27,14 +27,26 @@ jobs:
         git config --global user.name "Nom d'utilisateur"
         git config --global user.email "email@example.com"
   
-    - name: Generate Changelog
-      run: npx standard-version --release-as minor
+        - name: Generate Changelog
+        run: npx standard-version --release-as minor
+        working-directory: userapi
+      
+    - name: Print Changelog
+      run: cat CHANGELOG.md
       working-directory: userapi
-  
+      
+    - name: List changes
+      run: git status
+      working-directory: userapi
+      
+    - name: Add Changelog
+      run: git add CHANGELOG.md || echo "No changes to commit"
+      working-directory: userapi
+      
     - name: Commit and Push Changelog Updates
       run: |
-        git add CHANGELOG.md
-        git commit -m "chore: update changelog"
+        git diff-index --quiet HEAD || git commit -m "chore: update changelog"
         git push
       working-directory: userapi
+      
   
