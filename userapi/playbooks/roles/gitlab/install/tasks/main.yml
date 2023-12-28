@@ -42,10 +42,11 @@
     enabled: yes
 
 - name: Download GitLab install script
-  get_url:
-    url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh
-    dest: /tmp/script.rpm.sh
-
+  uri:
+    url: "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh"
+    dest: "/tmp/script.rpm.sh"
+    validate_certs: no
+    
 - name: Execute GitLab install script
   script: /tmp/script.rpm.sh
 
