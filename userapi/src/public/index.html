@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversion de Devises</title>
+</head>
+<body>
+    <h1>Conversion de Devises</h1>
+    <form id="conversionForm">
+        <input type="number" id="amount" placeholder="Montant" required>
+        <select id="fromCurrency" required>
+            <option value="USD">Dollar américain (USD) - États-Unis</option>
+            <option value="EUR">Euro (EUR) - Zone euro</option>
+            <option value="JPY">Yen japonais (JPY) - Japon</option>
+            <option value="GBP">Livre sterling (GBP) - Royaume-Uni</option>
+            <option value="CAD">Dollar canadien (CAD) - Canada</option>
+            <option value="AUD">Dollar australien (AUD) - Australie</option>
+            <option value="CHF">Franc suisse (CHF) - Suisse</option>
+            <option value="SEK">Couronne suédoise (SEK) - Suède</option>
+        </select>
+        <select id="toCurrency" required>
+            <option value="USD">Dollar américain (USD) - États-Unis</option>
+            <option value="EUR">Euro (EUR) - Zone euro</option>
+            <option value="JPY">Yen japonais (JPY) - Japon</option>
+            <option value="GBP">Livre sterling (GBP) - Royaume-Uni</option>
+            <option value="CAD">Dollar canadien (CAD) - Canada</option>
+            <option value="AUD">Dollar australien (AUD) - Australie</option>
+            <option value="CHF">Franc suisse (CHF) - Suisse</option>
+            <option value="SEK">Couronne suédoise (SEK) - Suède</option>
+        </select>
+        <button type="submit">Convertir</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('conversionForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const amount = document.getElementById('amount').value;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            try {
+                const response = await fetch(`/currency/convert?amount=${amount}&fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`);
+                if (!response.ok) {
+                    throw new Error('Erreur lors de la requête de conversion');
+                }
+                const data = await response.json();
+                document.getElementById('result').innerText = `Résultat: ${amount} ${fromCurrency} est équivalent à ${data.convertedAmount} ${toCurrency}`;
+            } catch (error) {
+                document.getElementById('result').innerText = error.message;
+            }
+        });
+    </script>
+</body>
+</html>

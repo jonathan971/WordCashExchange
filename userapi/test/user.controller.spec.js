@@ -1,5 +1,5 @@
 const userController = require('../src/controllers/user');
-const db = require('../src/dbClient');
+const db = require('../config/database');
 
 describe('User Controller', () => {
     beforeEach(() => {
@@ -9,9 +9,8 @@ describe('User Controller', () => {
     describe('Create User', () => {
         it('should create a new user successfully', (done) => {
             const user = {
-                username: 'jojovel',
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             userController.create(user, (err, result) => {
@@ -23,8 +22,8 @@ describe('User Controller', () => {
 
         it('should not create a user with incomplete data', (done) => {
             const user = {
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             userController.create(user, (err, result) => {
@@ -36,9 +35,8 @@ describe('User Controller', () => {
 
         it('should not create a user that already exists', (done) => {
             const user = {
-                username: 'jojovel',
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             userController.create(user, () => {
@@ -54,9 +52,8 @@ describe('User Controller', () => {
     describe('Get User', () => {
         it('should retrieve an existing user by username', (done) => {
             const user = {
-                username: 'jojovel',
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             userController.create(user, () => {
@@ -78,5 +75,4 @@ describe('User Controller', () => {
         });
     });
 
-    // Ajoutez d'autres cas de test pour les fonctions supplémentaires dans user.controller.js
 });

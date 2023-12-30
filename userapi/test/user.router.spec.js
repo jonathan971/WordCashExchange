@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../src/index');
-const db = require('../src/dbClient');
+const db = require('../config/database');
 const userController = require('../src/controllers/user');
 
 
@@ -14,12 +14,11 @@ describe('User Routes', () => {
       db.quit();
     });
 
-    describe('POST /user', () => {
+    describe('POST /users', () => {
         it('should create a new user', (done) => {
             const user = {
-                username: 'jojovel',
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             request(app)
@@ -35,8 +34,8 @@ describe('User Routes', () => {
 
         it('should return error for invalid user data', (done) => {
             const user = {
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             request(app)
@@ -51,12 +50,11 @@ describe('User Routes', () => {
         });
     });
 
-   describe('GET /user', () => {
+   describe('GET /users', () => {
         it('should get an existing user', (done) => {
             const user = {
-                username: 'jojovel',
-                firstname: 'jonathan',
-                lastname: 'VELIN'
+                name: 'jojovel',
+                email: 'jonathan@gmail.com'
             };
 
             userController.create(user, () => {
@@ -83,5 +81,4 @@ describe('User Routes', () => {
         });
     });
 
-    // Ajoutez d'autres cas de test pour les routes supplémentaires
 });

@@ -1,4 +1,4 @@
-const configure = require('../src/configure');
+const configure = require('../config/database');
 
 describe('Configure', () => {
   it('load default json configuration file', () => {
@@ -9,6 +9,6 @@ describe('Configure', () => {
   it('load custom configuration', () => {
     const config_custom = {"custom": "value"};
     const config = configure(config_custom);
-    expect(config).toEqual({"redis": {"host": "127.0.0.1", "port": 6379}, "custom": "value"});
+    expect(config).toEqual({"MongoDB": {"host": "127.0.0.1", "port": 6379}, "custom": "value"});
   });
 });
