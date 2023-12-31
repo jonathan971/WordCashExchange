@@ -1,4 +1,3 @@
-
 const User = require('../models/user');
 
 // Créer un nouvel utilisateur
@@ -13,12 +12,17 @@ exports.getAllUsers = async () => {
     return await User.find({});
 };
 
-// Mettre à jour un utilisateur
+// Récupérer un utilisateur par e-mail
+exports.getUserByEmail = async (email) => {
+    return await User.findOne({ email });
+};
+
+// Mettre à jour un utilisateur par ID
 exports.updateUser = async (userId, updateData) => {
     return await User.findByIdAndUpdate(userId, updateData, { new: true });
 };
 
-// Supprimer un utilisateur
-exports.deleteUser = async (userId) => {
-    return await User.findByIdAndDelete(userId);
+// Supprimer un utilisateur par e-mail
+exports.deleteUserByEmail = async (email) => {
+    return await User.findOneAndDelete({ email });
 };

@@ -8,14 +8,12 @@ const app = express();
 let mongoServer;
 const request = supertest(app);
 
-// Créez une fonction qui renvoie l'URL de connexion MongoDB pour chaque test
 const getMongoUri = async () => {
   mongoServer = new MongoMemoryServer();
   await mongoServer.start();
   return mongoServer.getUri();
 };
 
-// Utilisez une variable pour stocker l'URL de connexion MongoDB actuelle
 let mongoUri;
 
 beforeEach(async () => {
@@ -132,11 +130,10 @@ describe('CRUD Tests for Users', () => {
   });
 });
 
-// Suite de tests pour la connexion à la base de données
+// Tests pour la connexion à la base de données
 describe("Database Connection", () => {
     it("should connect to the MongoDB database", async () => {
         try {
-            // La connexion est déjà configurée avant les tests
             expect(mongoose.connection.readyState).toBe(1); // 1 signifie connecté
         } catch (error) {
             fail("Failed to connect to the database");
