@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: mon-istio-destination-rule
 spec:
-  host: devopsproject-service
+  host: mon-app-service
   trafficPolicy:
     loadBalancer:
       simple: LEAST_CONN
@@ -11,8 +11,13 @@ spec:
     - name: v1
       labels:
         version: v1
-  ---
-  host: devopsproject-service-v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mon-istio-destination-rule-v2
+spec:
+  host: mon-app-service-v2
   trafficPolicy:
     loadBalancer:
       simple: LEAST_CONN

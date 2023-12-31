@@ -8,14 +8,22 @@ const app = express();
 let mongoServer;
 const request = supertest(app);
 
-beforeAll(async () => {
+// Créez une fonction qui renvoie l'URL de connexion MongoDB pour chaque test
+const getMongoUri = async () => {
   mongoServer = new MongoMemoryServer();
   await mongoServer.start();
-  const mongoUri = await mongoServer.getUri();
-  await mongoose.connect(mongoUri, { useNewUrlParser: true });
+  return mongoServer.getUri();
+};
+
+// Utilisez une variable pour stocker l'URL de connexion MongoDB actuelle
+let mongoUri;
+
+beforeEach(async () => {
+  mongoUri = await getMongoUri();
+  await mongoose.connect(mongoUri);
 });
 
-afterAll(async () => {
+afterEach(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
 });
@@ -123,3 +131,16 @@ describe('CRUD Tests for Users', () => {
     expect(response.body.email).toBe('get@example.com');
   });
 });
+
+// Suite de tests pour la connexion à la base de données
+describe("Database Connection", () => {
+    it("should connect to the MongoDB database", async () => {
+        try {
+            // La connexion est déjà configurée avant les tests
+            expect(mongoose.connection.readyState).toBe(1); // 1 signifie connecté
+        } catch (error) {
+            fail("Failed to connect to the database");
+        }
+    });
+});
+ 
