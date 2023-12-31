@@ -3,6 +3,7 @@ const connectDB = require('../config/database');
 const bodyParser = require('body-parser');
 const currencyRouter = require('./routes/currencyRoutes');
 const userRoutes = require('./routes/user'); 
+const { specs, swaggerUi } = require('./swagger-config');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,21 +14,24 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Servir les fichiers statiques du dossier 'public'
+
 app.use(express.static('public'));
 
-// Route d'accueil (peut être utilisée pour servir votre page de conversion de devises)
+// Route d'accueil
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-// Utiliser le routeur pour les utilisateurs
+// Routeur pour les utilisateurs
 app.use('/users', userRoutes);
 
-// Utiliser le routeur pour la conversion de devises
+// Routeur pour la conversion de devises
 app.use('/currency', currencyRouter);
 
-// Démarrage du serveur
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
