@@ -1,6 +1,6 @@
 {
   "name": "word-cash-exchange",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "User API web application",
   "main": "src/index.js",
   "scripts": {
