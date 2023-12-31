@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mon-istio-destination-rule
+spec:
+  host: devopsproject-service
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+  ---
+  host: devopsproject-service-v2
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+  subsets:
+    - name: v2
+      labels:
+        version: v2
