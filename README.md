@@ -83,7 +83,50 @@ L'application sera accessible à l'adresse [http://localhost:3000](http://localh
 Vous pouvez tester l'application grâce à Jasmine :
 ```
 npm test
+
 ```
+
+## Docker 
+
+1. build l'image en exécutant la commande suivante :
+
+```
+docker build -t devopsproject .
+```
+
+2. start containers en exécutant la commande suivante :
+
+```
+docker compose up
+```
+
+3. orchestration kuberntes en exécutant les commandes suivantes :
+
+```
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/persistent-volume-claim.yaml
+kubectl apply -f k8s/persistent-volume.yaml
+```
+
+## Vagrant
+
+1. Lancement dès l'initialisation via la task "démarre de l'application" en exécutant la commande suivante :
+
+```
+vagrant up
+```
+
+2. Possibilité d'arrêt de lancement en effectuant un ctrl+C
+
+
+3. Lancer l'application en exécutant les commandes suivantes :
+
+```
+vagrant ssh
+cd app
+npm start
+```
+
 ## Bonus 💯
 
 Nous avons tenus à réaliser quelques bonus :
@@ -120,3 +163,5 @@ Permission accordée, à titre gracieux, à toute personne obtenant une copie de
 L'avis de droit d'auteur ci-dessus et cet avis de permission doivent être inclus dans toutes les copies ou parties substantielles du Logiciel.
 
 LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU IMPLICITE, Y COMPRIS, MAIS SANS S'Y LIMITER, LES GARANTIES DE QUALITÉ MARCHANDE, D'ADAPTATION À UN USAGE PARTICULIER ET D'ABSENCE DE CONTREFAÇON. EN AUCUN CAS, LES AUTEURS OU LES TITULAIRES DES DROITS D'AUTEUR NE SERONT RESPONSABLES DE TOUTE RÉCLAMATION, DOMMAGES OU AUTRE RESPONSABILITÉ, QUE CE SOIT DANS UNE ACTION DE CONTRAT, DE TORT OU AUTRE, DÉCOULANT DE, HORS OU EN RELATION AVEC LE LOGICIEL OU L'UTILISATION OU D'AUTRES NÉGOCIATIONS DANS LE LOGICIEL.
+
+

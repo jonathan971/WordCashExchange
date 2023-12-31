@@ -67,6 +67,8 @@ router.get('/convert', async (req, res) => {
     const { amount, fromCurrency, toCurrency } = req.query;
 
     try {
+        const apiKey = process.env.EXCHANGERATE_API_KEY;
+        console.log(apiKey);
         const response = await fetch(`https://v6.exchangerate-api.com/v6/8b0e1282b470e044364e1983/latest/${fromCurrency}`);
         const data = await response.json();
 

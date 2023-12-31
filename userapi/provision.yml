@@ -36,8 +36,26 @@
         NODE_MAJOR=20
         echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 
+
+    - name: Import the MongoDB public GPG Key
+      shell: wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+      
+    - name: Add the MongoDB repository to the list of sources
+      shell: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+      
+
+
+
+
     - name: Update apt cache
       apt:
+        update_cache: yes
+
+
+    - name: Install MongoDB
+      apt:
+        name: mongodb-org
+        state: present
         update_cache: yes
 
 
@@ -51,7 +69,9 @@
       args:
         chdir: /home/vagrant/app
 
-    - name: Start the Node.js app
-      command: npm start
+
+    - name: Démarrer l'application 
+      command: npm run start
       args:
         chdir: /home/vagrant/app
+      become: false 

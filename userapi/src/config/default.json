@@ -1,6 +1,6 @@
 {
     "mongodb": {
-      "uri": "mongodb+srv://jonathanvelin:jonathan123456789@cluster0.seiub71.mongodb.net/?retryWrites=true&w=majority"
+      "uri": "${MONGO_URL}"
     }
   }
   

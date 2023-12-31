@@ -3,6 +3,7 @@
 
 # Fichiers de configuration et clés sensibles
 .env
+/.env
 config.js
 
 # Fichiers et dossiers spécifiques au système d'exploitation
